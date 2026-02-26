@@ -24,6 +24,23 @@ model = genai.GenerativeModel(
 
 # --- 앱 UI 만들기 ---
 st.title("📚 나만의 PDF 학습 비서")
+# --- 가로 스크롤 기능을 위한 스타일 설정 ---
+st.markdown("""
+    <style>
+    /* 모든 표(table)에 가로 스크롤을 적용하고 글자 줄바꿈을 방지합니다 */
+    .stMarkdown table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    /* 표 내부 칸의 최소 너비를 지정하여 글자가 겹치지 않게 합니다 */
+    th, td {
+        min-width: 150px;
+        text-align: left;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 st.caption("업로드한 PDF 내용으로만 공부합니다.")
 
 if "chat_history" not in st.session_state:
@@ -57,4 +74,5 @@ if uploaded_file:
         
         with st.chat_message("assistant"):
             st.markdown(response.text)
+
             st.session_state.chat_history.append(("assistant", response.text))
