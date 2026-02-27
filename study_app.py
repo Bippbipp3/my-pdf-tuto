@@ -6,7 +6,7 @@ import pandas as pd
 from datetime import datetime
 
 # --- 1. 기본 설정 ---
-API_KEY = "AIzaSyCuZjGQTDtQvg_jz4Pqva35rlhq8GbEwYU"
+API_KEY "AIzaSyAmONlouyaE2Pn7-I2jhGkgoIy7mVLqiDU"
 genai.configure(api_key=API_KEY)
 
 # --- 2. 구글 시트 연결 (Secrets 사용) ---
@@ -105,5 +105,6 @@ if prompt := st.chat_input("질문을 입력하세요"):
             st.error(f"저장 중 오류: {e}")
         
         st.rerun()
+
 
 
